@@ -1,0 +1,20 @@
+## start the jetty server
+java -jar var/master/assets/jetty-runner.jar var/master/assets/ROOT.war
+
+## start the steam server
+./steam serve master --superuser-name="admin" --superuser-password="longhow123"
+
+## open ports if needed
+sudo iptables -I INPUT 1 -i eth0 -p tcp --dport 9000 -j ACCEPT
+sudo iptables -I INPUT 1 -i eth0 -p tcp --dport 9001 -j ACCEPT
+
+## creating an api will involve a new port to be opened
+sudo iptables -I INPUT 1 -i eth0 -p tcp --dport 13824 -j ACCEPT
+
+
+## JDK needs to be installedv
+sudo add-apt-repository ppa:openjdk-r/ppa  
+sudo apt-get update   
+sudo apt-get install openjdk-7-jdk
+
+
